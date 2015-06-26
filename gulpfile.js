@@ -6,6 +6,7 @@ const del = require('del');
 const babelify = require('babelify');
 const browserify = require('browserify');
 const source = require('vinyl-source-stream');
+const closureCompiler = require('gulp-closure-compiler');
 
 gulp.task('lint', function () {
     return gulp.src(['src/**/*.js', 'tests/**/*.js'])
@@ -20,7 +21,7 @@ gulp.task('test', function () {
         .pipe(mocha({ reporter: 'spec' }));
 });
 
-gulp.task('build', ['clean'], function () {
+gulp.task('build', function () {
     return browserify({
         entries: './build.js',
         debug: true,
@@ -31,8 +32,13 @@ gulp.task('build', ['clean'], function () {
         .pipe(gulp.dest('dist'));
 });
 
-gulp.task('clean', function (cb) {
-    del('dist', cb);
+gulp.task('compile', function () {
+    return gulp.src('dist/lib-build.js')
+        .pipe(closureCompiler({
+            compilerPath: 'bower_components/closure-compiler/compiler.jar',
+            fileName: 'lib-build.min.js'
+        }))
+        .pipe(gulp.dest('dist'));
 });
 
-gulp.task('default', ['lint', 'test', 'build']);
+gulp.task('default', ['lint', 'test', 'build', 'compile']);
