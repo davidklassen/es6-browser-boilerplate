@@ -6,3 +6,8 @@
 * gulp
 * bower
 * java 7+
+
+## Installation
+```bash
+npm run setup
+```
