@@ -9,5 +9,7 @@
 
 ## Installation
 ```bash
-npm run setup
+$ git clone git@github.com:DavidKlassen/es6-browser-boilerplate.git
+$ cd es6-browser-boilerplate
+$ npm run setup
 ```
