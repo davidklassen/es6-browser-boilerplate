@@ -1,8 +1,8 @@
 import Another from './another';
 
 export default {
-    foo(arg) {
-        console.log(arg);
+    foo() {
+        return 'bar';
     },
 
     anotherFn() {
