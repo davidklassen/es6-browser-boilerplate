@@ -1,20 +1,12 @@
-import Another from './another';
+import A from './moduleA.js';
+import B from './moduleB.js';
 
 export default {
-    foo() {
-        return 'bar';
-    },
-
-    anotherFn() {
-        return Another.anotherFn() + ', friend';
-    },
-
-    mainFn() {
-        return 'hello';
-    },
-
     init(config) {
-        console.log('[init]', config);
-        return Promise.resolve();
-    }
+        this._config = config;
+
+        return Promise.resolve(); // In case when init() is async
+    },
+    A: A,
+    B: B
 };

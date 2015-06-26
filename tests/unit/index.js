@@ -4,23 +4,19 @@ import sdk from '../../src';
 const expect = chai.expect;
 
 describe('SDK', () => {
-    it('should have foo() method', () => {
-        expect(sdk.foo).to.be.a('function');
-        expect(sdk.foo()).to.not.throw;
+    describe('init(config) method', () => {
+        it('should save config to "_config" property', () => {
+            let config = { foo: 'bar' };
+            sdk.init(config);
+            expect(config).to.deep.equal(sdk._config);
+        });
     });
 
-    it('should have anotherFn() method', () => {
-        expect(sdk.anotherFn).to.be.a('function');
-        expect(sdk.anotherFn()).to.not.throw;
+    it('should have A module', () => {
+        expect(sdk.A).to.not.be.undefined;
     });
 
-    it('should have mainFn() method', () => {
-        expect(sdk.mainFn).to.be.a('function');
-        expect(sdk.mainFn()).to.not.throw;
-    });
-
-    it('should have init() method', () => {
-        expect(sdk.init).to.be.a('function');
-        expect(sdk.init()).to.not.throw;
+    it('should have B module', () => {
+        expect(sdk.B).to.not.be.undefined;
     });
 });

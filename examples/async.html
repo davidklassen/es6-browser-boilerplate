@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Test Page</title>
+    <title>Async loading</title>
 </head>
 <body>
 <script>
@@ -16,7 +16,8 @@
 <script>
     MAIN({ foo: 'bar' }, function (sdk) {
         console.log('sdk loaded');
-        sdk.foo('call from client code');
+        console.log(sdk.A.foo());
+        console.log(sdk.B.bar());
     });
 </script>
 </body>
