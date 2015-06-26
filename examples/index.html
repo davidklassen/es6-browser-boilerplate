@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Test Page</title>
+</head>
+<body>
+<script>
+    (function(w,d,n,js,id,s){
+        id='main-sdk';if(d.getElementById(id))return;s=document.getElementsByTagName('script')[0];
+        w[n]=w[n]||function(c,f){w[n]['_config']=c;w[n]['_ready']=f};js=d.createElement('script');
+        js.id=id;js.async=true;js.src='../dist/lib-build.js';s.parentNode.insertBefore(js, s);
+    }(window,document,'MAIN'));
+</script>
+
+<script>
+    MAIN({ foo: 'bar' }, function (sdk) {
+        console.log('sdk loaded');
+        sdk.foo('call from client code');
+    });
+</script>
+</body>
+</html>

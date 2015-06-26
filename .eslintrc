@@ -4,7 +4,8 @@
     "strict": 0,
     "quotes": [2, "single"],
     "consistent-return": 0,
-    "no-unused-expressions": 0
+    "no-unused-expressions": 0,
+    "no-underscore-dangle": 0
   },
   "env": {
     "browser": true,

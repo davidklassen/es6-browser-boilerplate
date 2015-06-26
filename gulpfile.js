@@ -20,9 +20,9 @@ gulp.task('test', function () {
         .pipe(mocha({ reporter: 'spec' }));
 });
 
-gulp.task('build', ['lint', 'test', 'clean'], function () {
+gulp.task('build', ['clean'], function () {
     return browserify({
-        entries: './src/index.js',
+        entries: './build.js',
         debug: true,
         transform: [babelify]
     })
@@ -35,4 +35,4 @@ gulp.task('clean', function (cb) {
     del('dist', cb);
 });
 
-gulp.task('default', ['build']);
+gulp.task('default', ['lint', 'test', 'build']);
