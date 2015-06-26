@@ -1,7 +1,8 @@
 # es6-browser-boilerplate
 
-node
-gulp
-npm
-bower
-java 8
+## Dependencies
+* node
+* npm
+* gulp
+* bower
+* java 7+
