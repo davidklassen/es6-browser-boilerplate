@@ -3,12 +3,13 @@ const gulp = require('gulp');
 const eslint = require('gulp-eslint');
 const jscs = require('gulp-jscs');
 const mocha = require('gulp-mocha');
-const del = require('del');
+const istanbul = require('gulp-istanbul');
 const babelify = require('babelify');
 const browserify = require('browserify');
 const source = require('vinyl-source-stream');
 const closureCompiler = require('gulp-closure-compiler');
 const karma = require('karma').server;
+const isparta = require('isparta');
 
 gulp.task('lint', function () {
     return gulp.src(['src/**/*.js', 'tests/**/*.js'])
@@ -18,13 +19,24 @@ gulp.task('lint', function () {
         .pipe(jscs());
 });
 
-gulp.task('test:unit', function () {
+gulp.task('test:unit', function (done) {
     require('babel/register');
-    return gulp.src(['tests/unit/**/*.js'], { read: false })
-        .pipe(mocha({ reporter: 'spec' }));
+    gulp.src(['src/**/*.js'])
+        .pipe(istanbul({
+            instrumenter: isparta.Instrumenter,
+            includeUntested: true
+        }))
+        .pipe(istanbul.hookRequire())
+        .on('finish', function () {
+            gulp.src(['tests/unit/**/*.js'])
+                .pipe(mocha({ reporter: 'spec' }))
+                .pipe(istanbul.writeReports())
+                .pipe(istanbul.enforceThresholds({ thresholds: { global: 100 } }))
+                .on('end', done);
+        });
 });
 
-gulp.task('test:integration', ['build', 'compile'], function (done) {
+gulp.task('test:integration', ['test:unit', 'build', 'compile'], function (done) {
     karma.start({
         configFile: path.join(__dirname, '/tests/config/karma.conf.js'),
         singleRun: true

@@ -3,7 +3,7 @@ export default {
      *
      * @return {string}
      */
-    anotherFn: function () {
+    anotherFn() {
         return 'ok';
     }
 };
