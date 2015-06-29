@@ -1,7 +1,5 @@
-import chai from 'chai';
+import {expect} from 'chai';
 import sdk from '../../src';
-
-const expect = chai.expect;
 
 describe('SDK', () => {
     describe('init(config) method', () => {

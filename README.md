@@ -25,3 +25,14 @@ $ git clone git@github.com:DavidKlassen/es6-browser-boilerplate.git
 $ cd es6-browser-boilerplate
 $ npm run setup
 ```
+
+### Available gulp tasks
+* `gulp lint` - runs eslint and jscs
+* `gulp test:unit` - runs mocha unit tests
+* `gulp coverage` - runs unit tests and generates coverage report
+* `gulp test:integration` - runs karma tests
+* `gulp test` - runs unit and integration tests and generates code coverage report
+* `gulp browserify` - builds the script for browser
+* `gulp compile` - runs google closure compiler and generates minified script
+* `gulp build` - runs browserify and compile
+* `gulp` - default task, runs lint, test, build and compile tasks

@@ -1,9 +1,8 @@
-import chai from 'chai';
+import chai, {expect} from 'chai';
 import sinon from 'sinon';
+import sinonChai from 'sinon-chai';
 import A from '../../src/moduleA.js';
-
-const expect = chai.expect;
-chai.use(require('sinon-chai'));
+chai.use(sinonChai);
 
 describe('Module A', () => {
     describe('foo() method', () => {
