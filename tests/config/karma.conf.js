@@ -4,9 +4,11 @@ module.exports = function (config) {
         frameworks: ['mocha', 'browserify'],
         files: [
             'dist/lib-build.min.js',
+            'tests/config/setup.js',
             'tests/integration/**/*.js'
         ],
         preprocessors: {
+            'tests/config/setup.js': ['browserify'],
             'tests/integration/**/*.js': ['browserify']
         },
         browserify: {

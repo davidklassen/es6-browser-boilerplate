@@ -1,5 +1,3 @@
-import {expect} from 'chai';
-
 describe('Global reference to SDK', () => {
     it('should be defined', () => {
         expect(MAIN).to.not.be.undefined;

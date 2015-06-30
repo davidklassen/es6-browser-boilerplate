@@ -9,7 +9,7 @@ const babel = require('babel/register');
 const plugins = require('gulp-load-plugins')();
 
 function unitTests() {
-    return gulp.src(['tests/unit/**/*.js'])
+    return gulp.src(['tests/config/setup.js', 'tests/unit/**/*.js'])
         .pipe(plugins.mocha({
             reporter: 'spec',
             compilers: { js: babel }
