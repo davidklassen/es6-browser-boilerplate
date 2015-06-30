@@ -8,8 +8,7 @@ module.exports = function (config) {
             'tests/integration/**/*.js'
         ],
         preprocessors: {
-            'tests/config/setup.js': ['browserify'],
-            'tests/integration/**/*.js': ['browserify']
+            'tests/{config/setup,integration/**/*}.js': ['browserify']
         },
         browserify: {
             debug: true,
