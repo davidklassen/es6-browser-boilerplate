@@ -12,9 +12,7 @@ module.exports = function (config) {
         },
         browserify: {
             debug: true,
-            transform: [
-                ['babelify']
-            ]
+            transform: ['babelify']
         },
         reporters: ['spec'],
         colors: true,
