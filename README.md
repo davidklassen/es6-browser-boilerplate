@@ -31,6 +31,6 @@ $ npm run setup
 * `gulp test:integration` - runs karma tests
 * `gulp test` - runs unit and integration tests and generates code coverage report
 * `gulp browserify` - builds the script for browser
-* `gulp compile` - runs google closure compiler and generates minified script
+* `gulp compile` - runs uglify and generates minified script
 * `gulp build` - runs browserify and compile
 * `gulp` - default task, runs lint, test, build and compile tasks
