@@ -4,10 +4,12 @@ const eslint = require('gulp-eslint');
 const jscs = require('gulp-jscs');
 const mocha = require('gulp-mocha');
 const istanbul = require('gulp-istanbul');
+const uglify = require('gulp-uglify');
+const rename = require('gulp-rename');
+const sequence = require('gulp-sequence');
 const babelify = require('babelify');
 const browserify = require('browserify');
 const source = require('vinyl-source-stream');
-const closureCompiler = require('gulp-closure-compiler');
 const karma = require('karma').server;
 const isparta = require('isparta');
 const babel = require('babel/register');
@@ -49,7 +51,7 @@ gulp.task('test:unit', function () {
     return unitTests();
 });
 
-gulp.task('test:integration', ['browserify', 'compile'], function (done) {
+gulp.task('test:integration', function (done) {
     karma.start({
         configFile: path.join(__dirname, '/tests/config/karma.conf.js'),
         singleRun: true
@@ -67,15 +69,13 @@ gulp.task('browserify', function () {
         .pipe(gulp.dest('dist'));
 });
 
-gulp.task('compile', ['browserify'], function () {
+gulp.task('compile', function () {
     return gulp.src('dist/lib-build.js')
-        .pipe(closureCompiler({
-            compilerPath: 'bower_components/closure-compiler/compiler.jar',
-            fileName: 'lib-build.min.js'
-        }))
+        .pipe(uglify())
+        .pipe(rename({ extname: '.min.js' }))
         .pipe(gulp.dest('dist'));
 });
 
-gulp.task('build', ['browserify', 'compile']);
-gulp.task('test', ['test:integration', 'coverage']);
-gulp.task('default', ['lint', 'test', 'build', 'compile']);
+gulp.task('build', sequence('browserify', 'compile'));
+gulp.task('test', sequence('coverage', 'build', 'test:integration'));
+gulp.task('default', sequence('lint', 'test'));
