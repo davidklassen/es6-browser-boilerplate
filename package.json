@@ -1,7 +1,7 @@
 {
-  "name": "es6-browser-boilerplate",
-  "version": "1.0.0",
-  "description": "",
+  "name": "ES6 Browser Boilerplate",
+  "version": "1.0.1",
+  "description": "Boilerplate project for the development of third-party SDK's and browser applications using modern ES6 JavaScript.",
   "license": "MIT",
   "repository": {
     "type": "git",

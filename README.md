@@ -1,6 +1,6 @@
 # ES6 SDK browser boilerplate
 
-This boilerplate is intended for the development of third-party SDK's using modern ES6 JavaScript. 
+This boilerplate is intended for the development of third-party SDK's and browser applications using modern ES6 JavaScript.
 This is a simplified and enhanced version of [babel-library-boilerplate](https://github.com/babel/babel-library-boilerplate)
 
 ### Features
