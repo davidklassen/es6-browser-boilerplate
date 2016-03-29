@@ -13,7 +13,7 @@ function unitTests() {
     return gulp.src(['tests/config/setup.js', 'tests/unit/**/*.js'])
         .pipe(plugins.mocha({
             reporter: 'spec',
-            compilers: { js: babel }
+            compilers: {js: babel}
         }));
 }
 
@@ -35,7 +35,7 @@ gulp.task('coverage', function (done) {
         .on('finish', function () {
             unitTests()
                 .pipe(plugins.istanbul.writeReports())
-                .pipe(plugins.istanbul.enforceThresholds({ thresholds: { global: 100 } }))
+                .pipe(plugins.istanbul.enforceThresholds({thresholds: {global: 100}}))
                 .on('end', done);
         });
 });
@@ -58,7 +58,7 @@ gulp.task('browserify', function () {
 gulp.task('compile', function () {
     return gulp.src('dist/lib-build.js')
         .pipe(plugins.uglify())
-        .pipe(plugins.rename({ extname: '.min.js' }))
+        .pipe(plugins.rename({extname: '.min.js'}))
         .pipe(gulp.dest('dist'));
 });
 
@@ -79,7 +79,7 @@ function handleErrors() {
 function buildScript(watch) {
     var props = {
         entries: './build.js',
-        debug : true,
+        debug: true,
         transform: [babelify]
     };
 
@@ -93,7 +93,8 @@ function buildScript(watch) {
             .pipe(source('lib-build.js'))
             .pipe(gulp.dest('dist'));
     }
-    bundler.on('update', function() {
+
+    bundler.on('update', function () {
         rebundle();
         plugins.util.log('Rebundle...');
     });
