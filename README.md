@@ -33,4 +33,5 @@ $ npm run setup
 * `gulp browserify` - builds the script for browser
 * `gulp compile` - runs uglify and generates minified script
 * `gulp build` - runs browserify and compile
+* `gulp watch` - runs watchify and watches for changes and builds script in background
 * `gulp` - default task, runs lint, test, build and compile tasks
